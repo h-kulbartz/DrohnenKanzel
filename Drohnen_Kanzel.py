@@ -19,15 +19,11 @@ print("vOR IMPORT")
 import Crazyflie_test 
 # print(dir(Crazyflie_test))
 print("Nach Import")
-global M
-global count
 
 M = Crazyflie_test.ScanCfly()
 print(type(M))
 # sys.exit(1)
 
-
-count = 0
 thrust = 0
 def mouse_wheel(event):
     
