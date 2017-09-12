@@ -30,6 +30,10 @@ Simple example that connects to the first Crazyflie found, ramps up/down
 the motors and disconnects.
 """
 
+
+#Dies ist ein Test
+
+
 import time
 import sys
 from threading import Thread
