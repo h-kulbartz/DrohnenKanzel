@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
 /*****************************************************************************/
@@ -127,6 +128,6 @@ label4.pack()
 while True:
     root.update_idletasks()
     root.update() 
-    MotorThrust(count)
+#    MotorThrust(count)
 #    time.sleep(0.5)
 #root.mainloop()

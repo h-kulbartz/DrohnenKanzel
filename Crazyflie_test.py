@@ -1,3 +1,5 @@
+#!/usr/bin/python
+#
 # -*- coding: utf-8 -*-
 #
 #     ||          ____  _ __
@@ -29,11 +31,11 @@
 Simple example that connects to the first Crazyflie found, ramps up/down
 the motors and disconnects.
 """
-
+ 
 
 #Dies ist ein Test
 
-
+print("Start of the example")
 import time
 import sys
 from threading import Thread
@@ -68,7 +70,7 @@ class MotorRampExample():
         thrust = 500
      
         print("In MotorRampExample() thrust %i" % thrust)
-#        self.up_motors(thrust)
+        self.up_motors(thrust)
 #        self.motors()
 
     def _connected(self, link_uri):
@@ -78,7 +80,7 @@ class MotorRampExample():
         # Start a separate thread to do the motor test.
         # Do not hijack the calling thread!
         print ("In connected zeile 74")
-        Thread(target=self._ramp_motors).start()
+#        Thread(target=self._ramp_motors).start()
 #
 #        Thread(target=self.up_motors).start()
 #        Thread(target=self.motors).start()
@@ -158,7 +160,7 @@ class MotorRampExample():
             # Make sure that the last packet leaves before the link is closed
             # since the message queue is not flushed before closing
         time.sleep(0.1)
-#        self._cf.close_link()
+        self._cf.close_link()
 #        print("Schliesse Link")
         time.sleep(0.1)
         
@@ -237,7 +239,7 @@ def ScanCfly():
     for i in available:
         print(l, i[0])
         l += 1
-
+        
     if len(available) > 0:
         le = MotorRampExample(available[0][0])
         print(l, "(2) After le", le)
@@ -248,7 +250,12 @@ def ScanCfly():
 #    return le
 
 if __name__ == '__main__':
+    print('Name = main')
+
+
+if __name__ == '__main__':
     # Initialize the low-level drivers (don't list the debug drivers)
+    print('test')
     cflib.crtp.init_drivers(enable_debug_driver=False)
     # Scan for Crazyflies and use the first one found
     print("(1) Scanning interfaces for Crazyflies...")
@@ -262,6 +269,7 @@ if __name__ == '__main__':
         print("(1) After le", le)
     else:
         print("(1) No Crazyflies found, cannot run example")
-else:
-    print("Library call")    
+
+
+
 
