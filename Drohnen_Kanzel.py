@@ -129,7 +129,11 @@ while True:
     root.update_idletasks()
     root.update() 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 #    MotorThrust(count)
+=======
+    MotorThrust(thrust)
+>>>>>>> Stashed changes
 =======
     MotorThrust(thrust)
 >>>>>>> Stashed changes
