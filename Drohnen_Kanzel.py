@@ -130,7 +130,11 @@ while True:
     root.update() 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 #    MotorThrust(count)
+=======
+    MotorThrust(thrust)
+>>>>>>> Stashed changes
 =======
     MotorThrust(thrust)
 >>>>>>> Stashed changes
