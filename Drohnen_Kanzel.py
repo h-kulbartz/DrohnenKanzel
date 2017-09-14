@@ -128,18 +128,8 @@ label4.pack()
 while True:
     root.update_idletasks()
     root.update() 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-#    MotorThrust(count)
-=======
+
     MotorThrust(thrust)
->>>>>>> Stashed changes
-=======
-    MotorThrust(thrust)
->>>>>>> Stashed changes
-=======
-    MotorThrust(thrust)
->>>>>>> Stashed changes
+
 #    time.sleep(0.5)
 #root.mainloop()
