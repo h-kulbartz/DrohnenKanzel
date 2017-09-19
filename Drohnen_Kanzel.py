@@ -1,14 +1,13 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
 /*****************************************************************************/
 /* Created on Fri Aug 11 19:54:49 2017                                       */
 /* Type        : Python Script                                               */
-/* Description : Steuerung der Drohne.                                       */
-/* Module      : Crazyflie_test                                              */
-/* Resources   : tkinter.                                                    */ 
-/* Input       : Bildschirm                                                  */
-/* Output      : Bildschirm und und Crazyflie_test.ScanCfly().               */
+/* Description : Eigabemaske zur Steuerung der Drohne                        */
+/* Module      : tkinter, sys und Crazyflie_test                             */
+/* Resources   : Drohne(n)                                                   */ 
+/* Input       : Bildschirm und Maus                                         */
+/* Output      : Bildschirm und Crazyflie_test                               */
 /*                                                                           */
 /* @author     : Hermann Kulbartz                                            */
 /*****************************************************************************/
@@ -16,38 +15,27 @@
 print(__doc__)
 from tkinter import *
 import sys
-print("vOR IMPORT")
 import Crazyflie_test 
-# print(dir(Crazyflie_test))
-print("Nach Import")
 
 M = Crazyflie_test.ScanCfly()
-print(type(M))
-# sys.exit(1)
 
-thrust = 0
 def mouse_wheel(event):
-    
+    global count    
     # respond to Linux or Windows wheel event
     if event.num == 5 or event.delta == -120:
         count -= 500
     if event.num == 4 or event.delta == 120:
         count += 500
     label['text'] = count #int(var1.get())
-    #thrust = count
-    #int(var1,get()) = count
 
 def sel():
    selection1 = "thrust = " + str(var1.get()) + "  yawrate = " + str(var2.get()) + " °"
    label1.config(text = selection1)
    selection2 = "roll = " + str(var3.get()) + " °" + "  pitch = " + str(var4.get()) + " °"
    label2.config(text = selection2)
-   print(selection1, selection2)
-   
+   print(selection1, selection2)   
    thrust = count  #int(var1.get())
-   print(thrust)
-   M.motorsthrust(thrust)
-#
+
 #   yawrate = int(var2.get())
 #   M.motorsyawrate(yawrate)
 #   
@@ -59,7 +47,6 @@ def sel():
 
 def MotorThrust(count):
    thrust = count  #int(var1.get())
-   print(thrust)
    M.motorsthrust(thrust)
    
 def Close():
@@ -67,7 +54,7 @@ def Close():
    
 def Open():
    M.Open()
-   
+       
 root = Tk()
 root.title("Drohnen Kanzel")
 var1 = IntVar()
@@ -83,8 +70,8 @@ scale4 = Scale( root, variable = var4, from_ = 180, to = -180, length = 200, tic
 scale4.pack(side = LEFT)
 
 
-scrollbar = Scrollbar(root)
-scrollbar.pack( side = RIGHT, fill=Y )
+#scrollbar = Scrollbar(root)
+#scrollbar.pack( side = RIGHT, fill=Y )
 
 root.bind("<Button-4>", mouse_wheel)
 root.bind("<Button-5>", mouse_wheel)
@@ -124,12 +111,12 @@ label3.pack()
 
 label4 = Label(root)
 label4.pack()
+count = 9000
+thrust = 0
 
 while True:
     root.update_idletasks()
     root.update() 
-
-    MotorThrust(thrust)
-
+    MotorThrust(count)
 #    time.sleep(0.5)
 #root.mainloop()
